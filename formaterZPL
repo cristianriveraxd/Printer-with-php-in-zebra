@@ -1,0 +1,15 @@
+<?php
+// Formato ZPL para imprimir una etiqueta
+$zpl = "^XA" . "\n"; // Iniciar una nueva etiqueta
+
+// Definir el tamaño de la etiqueta
+$zpl .= "^FO50,50^A0N,50,50^FDNombre: $nombre_cliente^FS\n"; // Imprimir el nombre del cliente
+$zpl .= "^FO50,100^A0N,50,50^FDProducto: $producto^FS\n"; // Imprimir el nombre del producto
+$zpl .= "^FO50,150^A0N,50,50^FDPrecio: $$precio^FS\n"; // Imprimir el precio
+
+$zpl .= "^FO50,200^GB800,1,1^FS\n"; // Dibujar una línea
+$zpl .= "^FO50,250^A0N,50,50^FDGracias por su compra!^FS\n"; // Mensaje de agradecimiento
+$zpl .= "^XZ"; // Finalizar la etiqueta
+
+// Ahora tienes el código ZPL para la impresión
+?>
