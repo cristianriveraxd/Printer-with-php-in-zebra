@@ -1,0 +1,16 @@
+<?php
+$ip_impresora = "192.168.1.100"; // Dirección IP de la impresora Zebra
+$puerto = 9100; // Puerto de impresión predeterminado para impresoras Zebra
+
+// Crear una conexión socket
+$socket = fsockopen($ip_impresora, $puerto);
+
+if (!$socket) {
+    echo "No se pudo conectar a la impresora.";
+} else {
+    // Enviar el ZPL
+    fwrite($socket, $zpl);
+    fclose($socket); // Cerrar la conexión
+    echo "Etiqueta enviada a la impresora.";
+}
+?>
