@@ -1,0 +1,16 @@
+<?php
+$printer_name = "Zebra_Printer"; // Nombre de la impresora en el sistema
+$printer = printer_open($printer_name);
+
+if ($printer) {
+    printer_start_doc($printer, "Etiqueta");
+    printer_start_page($printer);
+    printer_write($printer, $zpl); // Escribir el ZPL
+    printer_end_page($printer);
+    printer_end_doc($printer);
+    printer_close($printer); // Cerrar la impresora
+    echo "Etiqueta enviada a la impresora.";
+} else {
+    echo "No se pudo conectar a la impresora.";
+}
+?>
