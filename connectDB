@@ -1,0 +1,30 @@
+<?php
+$servername = "localhost";
+$username = "usuario";
+$password = "contraseña";
+$dbname = "basededatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Query para obtener los datos
+$sql = "SELECT nombre_cliente, producto, precio FROM tabla WHERE id = 1"; // Ajusta la consulta
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Tomar los datos
+    $row = $result->fetch_assoc();
+    $nombre_cliente = $row['nombre_cliente'];
+    $producto = $row['producto'];
+    $precio = $row['precio'];
+} else {
+    echo "No se encontraron resultados";
+}
+
+$conn->close();
+?>
